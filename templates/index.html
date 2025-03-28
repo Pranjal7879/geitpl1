@@ -10,5 +10,44 @@
    {% for n in clist %}
    <div> {{forloop.counter}}  {{n}}</div>
    {% endfor %}
+
+   <br/>
+
+   <table border='1' cellpadding = "10">
+    <tr>
+         <th>Nmae</th>
+         <th>Phone Number</th>
+    </tr>
+
+
+    {% for d in students_detail%}
+     <tr>
+        <td>{{d.name}}</td>
+        <td>{{d.phone}}</td>
+     </tr>    
+    {%endfor%}
+
+     {% comment %} <tr>
+        <td></td>
+        <td></td>
+     </tr>   {% endcomment %}
+     
+   </table>
+
+
+     {%for n in numbers %}
+       {% if n > 20 %}
+         <div> {{n}} </div>
+        {% endif %} 
+     {% endfor %}
+
+     
+
+
+
 </body>
 </html>
+
+
+
+{% comment %} i have to ask for while loop  {% endcomment %}

@@ -6,6 +6,7 @@ def homePage(request):
         'title':'GEITPL',
         'bdata':'Welcome to office',
         'clist' : ["js", "django", "python", "github"],
+        'numbers': [10,20,30,40,50],
         'students_detail':[
             {'name':'pranjal', 'phone': 1345678988},
             {'name':'shukla', 'phone': 98745632159}
