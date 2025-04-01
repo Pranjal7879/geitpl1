@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-mudf*%-zl&2e$5t5ghe0^#g&o+=+&(z7rqkm4k#2x@o^jkap$r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1","localhost"]
 
 
 # Application definition
@@ -74,10 +74,26 @@ WSGI_APPLICATION = 'geitpl.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "mydatabase", 
+#         "USER": "mydatabaseuser", 
+#         "PASSWORD": "Pranjal@1234", 
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "geitpl", 
+        "USER": "goldeneagle", 
+        "PASSWORD": "Golden@1234", 
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
@@ -122,3 +138,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"    
+]

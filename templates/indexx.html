@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ bdata }}</h1>
+    
+    <h2>Course List</h2>
+    <ul>
+        {% for course in clist %}
+            <li>{{ course }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Numbers List (Greater than 20)</h2>
+    <ul>
+        {% for num in numbers %}
+            {% if num > 20 %}
+                <li>{{ num }} (Greater than 20)</li>
+            {% else %}
+                <li>{{ num }} (Less than or equal to 20)</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    
+    <h2>Student Details</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+        </tr>
+        {% for student in students_detail %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.phone }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

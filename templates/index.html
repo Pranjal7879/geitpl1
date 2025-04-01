@@ -1,53 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
+    <title>Home - Golden Eagle</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-   {{bdata}}
-   {% for n in clist %}
-   <div> {{forloop.counter}}  {{n}}</div>
-   {% endfor %}
 
-   <br/>
+{% extends 'base.html' %}
 
-   <table border='1' cellpadding = "10">
-    <tr>
-         <th>Nmae</th>
-         <th>Phone Number</th>
-    </tr>
+{% block content %}
+       
+    {% comment %} {% include 'header.html' %} {% endcomment %}
+    {% comment %} <header>
+        <h1>Welcome to Golden Eagle IT Technology</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about-us/">About Us</a>
+            <a href="/contact-us/">Contact Us</a>
+        </nav>
+    </header> {% endcomment %}
 
-
-    {% for d in students_detail%}
-     <tr>
-        <td>{{d.name}}</td>
-        <td>{{d.phone}}</td>
-     </tr>    
-    {%endfor%}
-
-     {% comment %} <tr>
-        <td></td>
-        <td></td>
-     </tr>   {% endcomment %}
-     
-   </table>
-
-
-     {%for n in numbers %}
-       {% if n > 20 %}
-         <div> {{n}} </div>
-        {% endif %} 
-     {% endfor %}
-
-     
-
-
-
+    <main>
+        <p>We are a leading IT company providing top-notch software services.</p>
+    </main>
+    
+{% endblock  %}
+{% comment %} {% include 'footer.html' %} {% endcomment %}
 </body>
 </html>
-
-
-
-{% comment %} i have to ask for while loop  {% endcomment %}

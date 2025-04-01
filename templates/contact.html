@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Golden Eagle</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+
+
+    {% extends 'base.html' %}
+
+
+    
+    {% block content %}
+        
+    
+        
+    {% comment %} {% include 'header.html' %} {% endcomment %}
+
+    {% comment %} <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about-us/">About Us</a>
+            <a href="/contact-us/">Contact Us</a>
+        </nav>
+    </header> {% endcomment %}
+    
+    <main>
+        <p>Contact Number: <strong>+91 7418529630</strong></p>
+        <p>Email ID: <strong>pranjal.s@goldeneagle.ai</strong></p>
+        <p>Address: <strong>Indore, MP</strong></p>
+
+        <button onclick="showMessage()">Click Me</button>
+        <p id="message"></p>
+    </main>
+{% comment %} {% include "footer.html" %}       {% endcomment %}
+
+{% endblock %}
+</body>
+</html>
+
+
