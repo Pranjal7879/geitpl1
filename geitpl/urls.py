@@ -45,4 +45,7 @@ urlpatterns = [
     path('contact-us/', views.contactUs,name='contact'),
     path('course/', views.courses, name='course'),
     path('course/<int:courseid>/', views.Coursedetail, name='course_detail'),
+    path('first/', views.first,name='first'),
+    path('userform', views.userForm,name="userform"),
+
 ]

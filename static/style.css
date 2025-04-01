@@ -37,6 +37,8 @@ footer {
 }
 
 
-header .avtive a{
-    background-color: rgb(58, 208, 213);
+.active-link {
+    color: red;
+    font-weight: bold;
 }
+

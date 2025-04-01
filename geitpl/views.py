@@ -2,18 +2,18 @@
 # from django.shortcuts import render
 
 # def homePage(request):
-#     # data={
-#     #     'title':'GEITPL',
-#     #     'bdata':'Welcome to office',
-#     #     'clist' : ["js", "django", "python", "github"],
-#     #     'Alist' : ["A","Z","P","K","F"],
-#     #     'numbers': [10,20,30,40,50],
-#     #     'students_detail':[
-#     #         {'name':'pranjal', 'phone': 1345678988},
-#     #         {'name':'shukla', 'phone': 98745632159}
+#     data={
+#         'title':'GEITPL',
+#         'bdata':'Welcome to office',
+#         'clist' : ["js", "django", "python", "github"],
+#         'Alist' : ["A","Z","P","K","F"],
+#         'numbers': [10,20,30,40,50],
+#         'students_detail':[
+#             {'name':'pranjal', 'phone': 1345678988},
+#             {'name':'shukla', 'phone': 98745632159}
 
-#     #     ]
-#     # }
+#         ]
+#     }
 #     return render(request,"index.html")
 
 # def aboutUs(request):
@@ -33,6 +33,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+def first(request):
+    data = {
+        'title': 'GEITPL',
+        'bdata': 'Welcome to office',
+        'clist': ["js", "django", "python", "github"],
+        'Alist': ["A", "Z", "P", "K", "F"],
+        'numbers': [10, 20, 30, 40, 50],
+        'students_detail': [
+            {'name': 'pranjal', 'phone': 1345678988},
+            {'name': 'shukla', 'phone': 98745632159}
+        ]
+    }
+    
+    return render(request, "first.html", data)
+
+
 def homePage(request):
     return render(request, "index.html")
 
@@ -47,3 +63,9 @@ def courses(request):
 
 def Coursedetail(request, courseid):
     return HttpResponse(f"Course ID: {courseid}")
+
+def firsttt(request):
+    return render(request,"first.html")
+
+def userForm(request):
+    return render(request,"userform.html")
