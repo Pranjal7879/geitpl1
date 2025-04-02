@@ -26,12 +26,8 @@
 # def Coursedetail(request,courseid):
 #     return HttpResponse(courseid)
 
-
-
-
-
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse,HttpResponseRedirect
+from django.shortcuts import redirect, render
 
 def first(request):
     data = {
@@ -67,5 +63,19 @@ def Coursedetail(request, courseid):
 def firsttt(request):
     return render(request,"first.html")
 
+def submitform(request):
+    return HttpResponse(request)
+
 def userForm(request):
-    return render(request,"userform.html")
+    form_data = {}
+    try:
+        if request.method == "POST":
+         name = request.POST.get('name')
+         email = request.POST.get('email')
+         position = request.POST.get('position')
+
+        if name and email and position:
+         return HttpResponseRedirect('/about-us/')
+    except:
+          pass
+    return render(request,"userform.html", {'form_data': form_data})

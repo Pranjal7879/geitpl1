@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    
+    {% block content %}
+        
+
+        
+    <h2>Employee Form</h2>
+    <form method="post" action="{% url 'submitform' %}">
+      {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" required><br><br>
+        
+        <button type="submit">Save</button>
+         
+        {% comment %} <h3>Details:</h3>
+        <input type="text" value="Name: {{ form_data.name }}, Email: {{ form_data.email }}, Position: {{ form_data.position }}" readonly/> {% endcomment %}
+    </form>
+
+    {% endblock  %}
+</body>
+</html>
