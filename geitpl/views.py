@@ -28,6 +28,8 @@
 
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import redirect, render
+# from .forms import dummyForm
+
 
 def first(request):
     data = {
@@ -66,8 +68,12 @@ def firsttt(request):
 def submitform(request):
     return HttpResponse(request)
 
+
 def userForm(request):
+    # form = dummyForm()
+    # form_data = {'form':form}
     form_data = {}
+    
     try:
         if request.method == "POST":
          name = request.POST.get('name')
@@ -76,6 +82,72 @@ def userForm(request):
 
         if name and email and position:
          return HttpResponseRedirect('/about-us/')
+        
+        # form_data = {'form': form}
     except:
           pass
     return render(request,"userform.html", {'form_data': form_data})
+
+
+
+
+# def calculator(request):
+#     result = None  
+
+#     if request.method == "POST":
+#         num1 = request.POST.get("num1")
+#         num2 = request.POST.get("num2")
+#         operation = request.POST.get("operation")
+
+#         try:
+#             num1 = float(num1)
+#             num2 = float(num2)
+
+#             if operation == "+":
+#                 result = num1 + num2
+#             elif operation == "-":
+#                 result = num1 - num2
+#             elif operation == "*":
+#                 result = num1 * num2
+#             elif operation == "/":
+#                 result = num1 / num2 if num2 != 0 else "Cannot divide by zero"
+#             else:
+#                 result = "Invalid operation"
+
+#         except ValueError:
+#             result = "Invalid input"
+
+#     return render(request, "calculator.html", {"result": result})
+
+
+
+
+
+def calculator(request):
+    if request.method == "POST":
+        num1 = request.POST.get("num1")
+        num2 = request.POST.get("num2")
+        operation = request.POST.get("operation")
+
+        try:
+            num1 = float(num1)
+            num2 = float(num2)
+
+            if operation == "+":
+                result = num1 + num2
+            elif operation == "-":
+                result = num1 - num2
+            elif operation == "*":
+                result = num1 * num2
+            elif operation == "/":
+                result = num1 / num2 if num2 != 0 else "Cannot divide by zero"
+            else:
+                result = "Invalid operation"
+
+        except ValueError:
+            result = "Invalid input"
+
+        return redirect(f"/calculator/?result={result}")  
+
+    result = request.GET.get("result")  
+    return render(request, "calculator.html", {"result": result})

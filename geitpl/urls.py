@@ -48,5 +48,6 @@ urlpatterns = [
     path('first/', views.first,name='first'),
     path('userform', views.userForm,name="userform"),
     path('submitform', views.submitform,name="submitform"),
-
+    path('calculator/', views.calculator,name='calculator')
+    
 ]
