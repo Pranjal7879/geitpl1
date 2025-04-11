@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Golden Eagle</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
 
 {% extends 'base.html' %}
 
 {% block content %}
-       
-    {% comment %} {% include 'header.html' %} {% endcomment %}
-    {% comment %} <header>
-        <h1>Welcome to Golden Eagle IT Technology</h1>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about-us/">About Us</a>
-            <a href="/contact-us/">Contact Us</a>
-        </nav>
-    </header> {% endcomment %}
 
     <main>
         <p>We are a leading IT company providing top-notch software services.</p>
     </main>
-    
+    <script>
+        const token = "{{ token }}";
+        if (token) {
+            localStorage.setItem("auth_token", token);
+        }
+    </script>
+
 {% endblock  %}
-{% comment %} {% include 'footer.html' %} {% endcomment %}
+
 </body>
 </html>

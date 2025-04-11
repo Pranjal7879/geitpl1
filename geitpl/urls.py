@@ -14,26 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 # """
-# from django.contrib import admin
-# from django.urls import path
-# from geitpl import views
-
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('about-us/', views.aboutUs),
-#     path('', views.homePage),
-#     path('course/',views.courses),
-#     path('course/<int:courseid>',views.Coursedetail) 
-# ]
-
-
-
-
-
-
-
-# $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$/
-
+                      
 from django.contrib import admin
 from django.urls import path
 from geitpl import views
@@ -48,6 +29,8 @@ urlpatterns = [
     path('first/', views.first,name='first'),
     path('userform', views.userForm,name="userform"),
     path('submitform', views.submitform,name="submitform"),
-    path('calculator/', views.calculator,name='calculator')
+    path('calculator/', views.calculator,name='calculator'),
+    path('signup/', views.signupform,name='signup'),
+    path('login/',views.loginform,name='login'),
     
 ]

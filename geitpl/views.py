@@ -1,35 +1,10 @@
-# from django.http import HttpResponse
-# from django.shortcuts import render
-
-# def homePage(request):
-#     data={
-#         'title':'GEITPL',
-#         'bdata':'Welcome to office',
-#         'clist' : ["js", "django", "python", "github"],
-#         'Alist' : ["A","Z","P","K","F"],
-#         'numbers': [10,20,30,40,50],
-#         'students_detail':[
-#             {'name':'pranjal', 'phone': 1345678988},
-#             {'name':'shukla', 'phone': 98745632159}
-
-#         ]
-#     }
-#     return render(request,"index.html")
-
-# def aboutUs(request):
-#     return render(request,"about.html")
-
-# def courses(request):
-#     return HttpResponse("welcome to my course")
-
-
-# def Coursedetail(request,courseid):
-#     return HttpResponse(courseid)
 
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import redirect, render
 # from .forms import dummyForm
-
+from services.models import Signup
+from django.contrib.auth.models import User
+ 
 
 def first(request):
     data = {
@@ -43,6 +18,7 @@ def first(request):
             {'name': 'shukla', 'phone': 98745632159}
         ]
     }
+
     
     return render(request, "first.html", data)
 
@@ -69,6 +45,8 @@ def submitform(request):
     return HttpResponse(request)
 
 
+
+
 def userForm(request):
     # form = dummyForm()
     # form_data = {'form':form}
@@ -87,40 +65,6 @@ def userForm(request):
     except:
           pass
     return render(request,"userform.html", {'form_data': form_data})
-
-
-
-
-# def calculator(request):
-#     result = None  
-
-#     if request.method == "POST":
-#         num1 = request.POST.get("num1")
-#         num2 = request.POST.get("num2")
-#         operation = request.POST.get("operation")
-
-#         try:
-#             num1 = float(num1)
-#             num2 = float(num2)
-
-#             if operation == "+":
-#                 result = num1 + num2
-#             elif operation == "-":
-#                 result = num1 - num2
-#             elif operation == "*":
-#                 result = num1 * num2
-#             elif operation == "/":
-#                 result = num1 / num2 if num2 != 0 else "Cannot divide by zero"
-#             else:
-#                 result = "Invalid operation"
-
-#         except ValueError:
-#             result = "Invalid input"
-
-#     return render(request, "calculator.html", {"result": result})
-
-
-
 
 
 def calculator(request):
@@ -151,3 +95,42 @@ def calculator(request):
 
     result = request.GET.get("result")  
     return render(request, "calculator.html", {"result": result})
+
+
+# def signupform(request):
+#     return render(request, "signup.html")
+
+def loginform(request):
+    if request.method == 'POST':
+     email = request.POST.get('email')
+     password = request.POST.get('password')
+
+     try:
+        user =  Signup.objects.get(email=email,password=password)
+        #  return redirect("/")
+        return render(request,"index.html", {'token':user.token})
+     except:
+         return render(request,'login.html',{'error':'Invvalid email or password'})
+     
+    return render(request,'login.html')
+         
+import uuid
+def signupform(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm = request.POST.get('confirmpassword')
+
+        if password != confirm:
+            return render(request, "signup.html", {"error": "Passwords do not match"})
+
+        try:
+            User_token = str(uuid.uuid4())
+            Signup.objects.create(UserName=name, email=email, password=password,token=User_token)
+            return redirect("login")
+        except:
+            return render(request, "signup.html", {"error": "Email already exists"})
+
+    return render(request, "signup.html")
+
